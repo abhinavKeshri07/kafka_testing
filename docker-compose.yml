@@ -1,0 +1,8 @@
+version: '3'
+
+services:
+  kafka-server:
+    build: ./kafka_server
+    container_name: kafka
+
+
