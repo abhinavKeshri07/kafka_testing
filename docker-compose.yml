@@ -1,8 +1,25 @@
 version: '3'
 
 services:
+  zoo:
+    image: zookeeper
+    restart: always
+    hostname: zoo
+    ports:
+      - 2181:2181
+    environment:
+      ZOO_MY_ID: 1
+      ZOO_SERVERS: server.1=0.0.0.0:2888:3888;2181
+
+
   kafka-server:
     build: ./kafka_server
-    container_name: kafka
+    container_name: kafka_ubuntu
+    ports:
+      - 9092:9092
+    depends_on:
+      - zoo
+
+
 
 
